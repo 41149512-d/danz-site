@@ -1,11 +1,35 @@
 
-  # E-commerce Fashion Platform
+# Danz Shop
 
-  This is a code bundle for E-commerce Fashion Platform. The original project is available at https://www.figma.com/design/e1W2SFT23OuXiXj1wfLQhS/E-commerce-Fashion-Platform.
+Aplicacao de e-commerce em React/Vite com uma API local de compras.
 
-  ## Running the code
+## Rodando o projeto
 
-  Run `npm i` to install the dependencies.
+Instale as dependencias:
 
-  Run `npm run dev` to start the development server.
-  
+```bash
+npm i
+```
+
+Em um terminal, suba a API:
+
+```bash
+npm run dev:api
+```
+
+Em outro terminal, suba o front-end:
+
+```bash
+npm run dev
+```
+
+## Back-end
+
+A API roda em `http://localhost:3333` e grava os dados em `server/data/db.json`.
+
+- `GET /api/health`
+- `GET /api/products`
+- `GET /api/orders`
+- `POST /api/orders`
+
+O checkout valida estoque e calcula o total no servidor.

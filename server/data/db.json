@@ -1,0 +1,59 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Camiseta Essential",
+      "price": 99.9,
+      "image": "https://images.unsplash.com/photo-1763750581767-b367bcd6c117?w=400&h=440&fit=crop&auto=format",
+      "category": "camisetas",
+      "colors": ["#111111", "#E8E8E8", "#888888"],
+      "stock": 12
+    },
+    {
+      "id": 2,
+      "name": "Moleton Overz",
+      "price": 199.9,
+      "image": "https://images.unsplash.com/photo-1762666167421-ff983e35ba98?w=400&h=440&fit=crop&auto=format",
+      "category": "moletons",
+      "colors": ["#111111", "#E8E8E8"],
+      "stock": 8
+    },
+    {
+      "id": 3,
+      "name": "Calca Cargo Street",
+      "price": 289.9,
+      "image": "https://images.unsplash.com/photo-1762666168682-8229f2a62305?w=400&h=440&fit=crop&auto=format",
+      "category": "calcas",
+      "colors": ["#111111", "#6B5E4E"],
+      "stock": 6
+    },
+    {
+      "id": 4,
+      "name": "Jaqueta Nylon Tech",
+      "price": 349.9,
+      "image": "https://images.unsplash.com/photo-1767036840795-359e1c5fba16?w=400&h=440&fit=crop&auto=format",
+      "category": "jaquetas",
+      "colors": ["#111111", "#E8E8E8"],
+      "stock": 4
+    },
+    {
+      "id": 5,
+      "name": "Bone Signature",
+      "price": 79.9,
+      "image": "https://images.unsplash.com/photo-1760920527114-2958980d44d2?w=400&h=440&fit=crop&auto=format",
+      "category": "acessorios",
+      "colors": ["#111111"],
+      "stock": 15
+    },
+    {
+      "id": 6,
+      "name": "Shorts Track",
+      "price": 139.9,
+      "image": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=440&fit=crop&auto=format",
+      "category": "shorts",
+      "colors": ["#111111", "#F0F0F0"],
+      "stock": 10
+    }
+  ],
+  "orders": []
+}

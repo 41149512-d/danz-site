@@ -1,0 +1,9 @@
+node_modules/
+dist/
+E-commerce Fashion Platform – Figma Make.html )front-end)_files/
+.env
+.env.*
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
