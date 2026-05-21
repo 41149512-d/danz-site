@@ -128,6 +128,12 @@ const categories: { key: Category; label: string }[] = [
   { key: "acessorios", label: "Acessorios" },
 ];
 
+const apiBaseUrl = import.meta.env.VITE_API_URL || "";
+
+function apiUrl(path: string) {
+  return `${apiBaseUrl}${path}`;
+}
+
 function formatPrice(value: number) {
   return `R$ ${value.toFixed(2).replace(".", ",")}`;
 }
@@ -706,7 +712,7 @@ export default function App() {
   const cartCount = useMemo(() => cart.reduce((sum, item) => sum + item.quantity, 0), [cart]);
 
   async function refreshProducts() {
-    const response = await fetch("/api/products");
+    const response = await fetch(apiUrl("/api/products"));
     if (!response.ok) {
       throw new Error("Nao foi possivel carregar produtos.");
     }
@@ -715,7 +721,7 @@ export default function App() {
   }
 
   async function refreshOrders() {
-    const response = await fetch("/api/orders");
+    const response = await fetch(apiUrl("/api/orders"));
     if (!response.ok) {
       throw new Error("Nao foi possivel carregar pedidos.");
     }
@@ -763,7 +769,7 @@ export default function App() {
     setCheckoutMessage("");
 
     try {
-      const response = await fetch("/api/orders", {
+      const response = await fetch(apiUrl("/api/orders"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

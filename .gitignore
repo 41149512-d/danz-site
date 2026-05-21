@@ -3,6 +3,7 @@ dist/
 E-commerce Fashion Platform – Figma Make.html )front-end)_files/
 .env
 .env.*
+!.env.example
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
