@@ -17,6 +17,7 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
+  base: '/danz-site/',
   server: {
     proxy: {
       '/api': 'http://localhost:3333',
