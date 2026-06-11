@@ -7,7 +7,8 @@
       "image": "https://images.unsplash.com/photo-1763750581767-b367bcd6c117?w=400&h=440&fit=crop&auto=format",
       "category": "camisetas",
       "colors": ["#111111", "#E8E8E8", "#888888"],
-      "stock": 12
+      "stock": 12,
+      "marketplaceUrl": "https://produto.mercadolivre.com.br/MLB-5362307054-camiseta-oversized-masculina-streetwear-algodo-_JM"
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "image": "https://images.unsplash.com/photo-1762666167421-ff983e35ba98?w=400&h=440&fit=crop&auto=format",
       "category": "moletons",
       "colors": ["#111111", "#E8E8E8"],
-      "stock": 8
+      "stock": 8,
+      "marketplaceUrl": "https://lista.mercadolivre.com.br/moletom-oversized"
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "image": "https://images.unsplash.com/photo-1762666168682-8229f2a62305?w=400&h=440&fit=crop&auto=format",
       "category": "calcas",
       "colors": ["#111111", "#6B5E4E"],
-      "stock": 6
+      "stock": 6,
+      "marketplaceUrl": "https://lista.mercadolivre.com.br/calca-cargo-streetwear"
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "image": "https://images.unsplash.com/photo-1767036840795-359e1c5fba16?w=400&h=440&fit=crop&auto=format",
       "category": "jaquetas",
       "colors": ["#111111", "#E8E8E8"],
-      "stock": 4
+      "stock": 4,
+      "marketplaceUrl": "https://lista.mercadolivre.com.br/jaqueta-techwear"
     },
     {
       "id": 5,
@@ -43,7 +47,8 @@
       "image": "https://images.unsplash.com/photo-1760920527114-2958980d44d2?w=400&h=440&fit=crop&auto=format",
       "category": "acessorios",
       "colors": ["#111111"],
-      "stock": 15
+      "stock": 15,
+      "marketplaceUrl": "https://lista.mercadolivre.com.br/bone-streetwear"
     },
     {
       "id": 6,
@@ -52,7 +57,8 @@
       "image": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=440&fit=crop&auto=format",
       "category": "shorts",
       "colors": ["#111111", "#F0F0F0"],
-      "stock": 10
+      "stock": 10,
+      "marketplaceUrl": "https://lista.mercadolivre.com.br/shorts-streetwear"
     }
   ],
   "orders": []

@@ -13,7 +13,6 @@ import {
   MapPin,
   Minus,
   Package,
-  Plus,
   Search,
   Settings,
   ShoppingBag,
@@ -35,6 +34,7 @@ interface Product {
   category: Category;
   colors: string[];
   stock: number;
+  marketplaceUrl: string;
 }
 
 interface CartItem {
@@ -70,6 +70,7 @@ const fallbackProducts: Product[] = [
     category: "camisetas",
     colors: ["#111111", "#E8E8E8", "#888888"],
     stock: 12,
+    marketplaceUrl: "https://produto.mercadolivre.com.br/MLB-5362307054-camiseta-oversized-masculina-streetwear-algodo-_JM",
   },
   {
     id: 2,
@@ -79,6 +80,7 @@ const fallbackProducts: Product[] = [
     category: "moletons",
     colors: ["#111111", "#E8E8E8"],
     stock: 8,
+    marketplaceUrl: "https://lista.mercadolivre.com.br/moletom-oversized",
   },
   {
     id: 3,
@@ -88,6 +90,7 @@ const fallbackProducts: Product[] = [
     category: "calcas",
     colors: ["#111111", "#6B5E4E"],
     stock: 6,
+    marketplaceUrl: "https://lista.mercadolivre.com.br/calca-cargo-streetwear",
   },
   {
     id: 4,
@@ -97,6 +100,7 @@ const fallbackProducts: Product[] = [
     category: "jaquetas",
     colors: ["#111111", "#E8E8E8"],
     stock: 4,
+    marketplaceUrl: "https://lista.mercadolivre.com.br/jaqueta-techwear",
   },
   {
     id: 5,
@@ -106,6 +110,7 @@ const fallbackProducts: Product[] = [
     category: "acessorios",
     colors: ["#111111"],
     stock: 15,
+    marketplaceUrl: "https://lista.mercadolivre.com.br/bone-streetwear",
   },
   {
     id: 6,
@@ -115,6 +120,7 @@ const fallbackProducts: Product[] = [
     category: "shorts",
     colors: ["#111111", "#F0F0F0"],
     stock: 10,
+    marketplaceUrl: "https://lista.mercadolivre.com.br/shorts-streetwear",
   },
 ];
 
@@ -142,15 +148,11 @@ function formatDate(value: string) {
   return new Intl.DateTimeFormat("pt-BR", { day: "2-digit", month: "short" }).format(new Date(value));
 }
 
-function ProductCard({
-  product,
-  quantity,
-  onAddToCart,
-}: {
-  product: Product;
-  quantity: number;
-  onAddToCart: (product: Product) => void;
-}) {
+function getMarketplaceUrl(product: Product) {
+  return product.marketplaceUrl || `https://lista.mercadolivre.com.br/${encodeURIComponent(product.name)}`;
+}
+
+function ProductCard({ product }: { product: Product }) {
   const [liked, setLiked] = useState(false);
   const soldOut = product.stock <= 0;
 
@@ -172,11 +174,6 @@ function ProductCard({
         >
           <Heart size={13} className={liked ? "fill-white text-white" : "text-white/70"} />
         </button>
-        {quantity > 0 && (
-          <span className="absolute left-2.5 top-2.5 bg-foreground text-background text-[10px] font-bold rounded-full px-2 py-0.5">
-            {quantity} no carrinho
-          </span>
-        )}
       </div>
       <div className="p-3 flex flex-col gap-3">
         <div>
@@ -195,14 +192,25 @@ function ProductCard({
           </div>
           <span className="text-[10px] text-muted-foreground">{product.stock} disp.</span>
         </div>
-        <button
-          onClick={() => onAddToCart(product)}
-          disabled={soldOut || quantity >= product.stock}
-          className="flex items-center justify-center gap-1.5 bg-foreground text-background text-xs font-semibold px-3 py-2 rounded-lg transition-colors hover:bg-foreground/90 disabled:cursor-not-allowed disabled:opacity-40"
-        >
-          <Plus size={13} />
-          {soldOut ? "Esgotado" : "Adicionar"}
-        </button>
+        {soldOut ? (
+          <button
+            type="button"
+            disabled
+            className="flex items-center justify-center gap-1.5 bg-foreground text-background text-xs font-semibold px-3 py-2 rounded-lg opacity-40 cursor-not-allowed"
+          >
+            Esgotado
+          </button>
+        ) : (
+          <a
+            href={getMarketplaceUrl(product)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-1.5 bg-foreground text-background text-xs font-semibold px-3 py-2 rounded-lg transition-colors hover:bg-foreground/90"
+          >
+            <ShoppingBag size={13} />
+            Comprar agora
+          </a>
+        )}
       </div>
     </div>
   );
@@ -330,7 +338,6 @@ function ShoppingView({
   cart,
   checkoutState,
   checkoutMessage,
-  onAddToCart,
   onIncrement,
   onDecrement,
   onRemove,
@@ -340,7 +347,6 @@ function ShoppingView({
   cart: CartItem[];
   checkoutState: CheckoutState;
   checkoutMessage: string;
-  onAddToCart: (product: Product) => void;
   onIncrement: (product: Product) => void;
   onDecrement: (productId: number) => void;
   onRemove: (productId: number) => void;
@@ -415,7 +421,7 @@ function ShoppingView({
                 </h1>
                 <p className="text-base text-foreground font-semibold mb-1">Estilo que move. Atitude que fica.</p>
                 <p className="text-xs text-muted-foreground mb-5 max-w-xs leading-relaxed">
-                  Escolha suas pecas, monte o carrinho e finalize o pedido com estoque validado pela API.
+                  Escolha suas pecas favoritas e compre direto no Mercado Livre.
                 </p>
                 <button className="flex items-center gap-2 bg-foreground text-background text-xs font-semibold px-5 py-2.5 rounded-lg hover:bg-foreground/90 transition-colors">
                   Explorar agora <ChevronRight size={13} />
@@ -463,8 +469,6 @@ function ShoppingView({
                   <ProductCard
                     key={product.id}
                     product={product}
-                    quantity={cart.find((item) => item.productId === product.id)?.quantity || 0}
-                    onAddToCart={onAddToCart}
                   />
                 ))}
               </div>
@@ -851,7 +855,6 @@ export default function App() {
             cart={cart}
             checkoutState={checkoutState}
             checkoutMessage={checkoutMessage}
-            onAddToCart={addToCart}
             onIncrement={addToCart}
             onDecrement={decrementCart}
             onRemove={removeFromCart}
