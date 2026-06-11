@@ -17,7 +17,7 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
-  base: '/danz-site/',
+  base: process.env.VERCEL ? '/' : '/danz-site/',
   server: {
     proxy: {
       '/api': 'http://localhost:3333',
